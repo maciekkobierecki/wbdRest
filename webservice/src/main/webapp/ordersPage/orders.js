@@ -5,7 +5,7 @@ var doOrderButton=$("#doOrder")[0];
 doOrderButton.addEventListener("click", function(){ doOrder(); });
 
 document.addEventListener("DOMContentLoaded", function(){
-    fetchProductsInTrolley();
+    fetchOrders();
 });
 
 function addToTrolley(id, price)
@@ -83,4 +83,48 @@ function doOrder(){
             $("#content").empty();       
         });
     }); 
+}
+
+
+function fetchOrders(){
+    console.log("fetchOrders")
+    $(document).ready(function() {
+        $.ajax({
+            url: "http://"+serverIP+":8081/wbd/api/getOrders",
+            dataType: "json"
+        }).then(function(data) {
+           $.each(data, function(key, value){
+               var order=createOrder(value.timestamp, value.product_id, value.order_price);
+        	   appendOrder(order[0]);
+           });
+           
+        });
+    }); 
+}
+
+
+function createOrder(timestamp, id, order_price){
+    //id
+    var $id=$("<div />")
+    .addClass("id")
+    .html("Id produktu:"+id);
+    //price
+    var $price=$("<div />")
+    .addClass("price")
+    .html("koszt zamówienia: "+order_price);
+    var $timestamp=$("<div />")
+    .addClass("timestamp")
+    .html("Data zamówienia: "+timestamp);
+    var $newOrder= $("<div />")
+    .addClass("product")
+    .append($timestamp)
+    .append($id)
+    .append($price);
+    
+    return $newOrder;
+}
+
+function appendOrder(order)
+{
+    content.append(order);
 }

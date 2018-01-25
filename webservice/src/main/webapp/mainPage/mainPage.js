@@ -50,7 +50,7 @@ function fetchProducts(category)
             dataType: "json"
         }).then(function(data) {
            $.each(data, function(key, value){
-        	   var product=createProduct(value.product_name, value.product_price, value.product_description);
+               var product=createProduct(value.product_id, value.product_price, value.product_description);
         	   appendProduct(product[0]);
            });
            
@@ -75,16 +75,16 @@ function resizeDivs() {
    
 }
 
-function createProduct(name, price, description)
+function createProduct(id, price, description)
 {
     //image
     var $image=$("<div />")
     .addClass("image")
     .html("<img src='image.jpg'>");
-    //name
-    var $name=$("<div />")
-    .addClass("name")
-    .html(name);
+    //id
+    var $id=$("<div />")
+    .addClass("id")
+    .html(id);
     //price
     var $price=$("<div />")
     .addClass("price")
@@ -92,19 +92,36 @@ function createProduct(name, price, description)
     var $trolley=$("<div />")
     .addClass("addToTrolley")
     .html("<img src='add.png'>");
+    $trolley.on('click', function(){
+        callServerToAddToTrolley($(this));
+    })
     var $description=$("<div />")
     .addClass("product_description")
     .html(description);
     var $newProduct= $("<div />")
     .addClass("product")
     .append($image)
-    .append($name)
+    .append($id)
     .append($description)
     .append($trolley)
     .append($price);
     
     return $newProduct;
     
+}
+
+function callServerToAddToTrolley(variable){
+    var id=variable.parent('div').find(".id").text();
+    console.log("adding to trolley: "+id);
+
+    $(document).ready(function() {
+        $.ajax({
+            url: "http://"+serverIP+":8081/wbd/api/addToTrolley?product_id="+id
+        }).then(function(data) {
+           console.log(data);   
+        });
+    }); 
+
 }
 
 function appendProduct(product)
@@ -122,8 +139,8 @@ function addCategory(name, count)
     categories.append(createCategory(name, count));
 }
 
-function addProduct(name, price, description)
+function addProduct(id, price, description)
 {
-    var newProduct=createProduct(name, price,description);
+    var newProduct=createProduct(id, price,description);
     appendProduct(newProduct[0]);
 }

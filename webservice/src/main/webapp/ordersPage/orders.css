@@ -10,7 +10,6 @@ body
     margin-left: auto;
     margin-right: auto;
 }
-
 #logo
 {
     font-family: 'Ubuntu Mono', monospace;
@@ -22,25 +21,39 @@ body
     float:left;
 }
 
-#card
+.order
 {
-    float:right;
-    padding:10px;
-    padding-right: 18px;
-    background-color: #128870;
-    border-radius: 10px;
+    min-width:500px;
+    position: relative;
+    min-height:84px;
+    background-color: #C0C0C0;
+    border: 1px dotted rgb(124, 124, 124);
+    color: #4e4e4e; 
 }
 
-#card:hover
-{
-    background-color: #0e725e;
-}
 #topbar
 {
     background-color: #128870;
     padding:30px;
     font-size: 20px;
     margin-bottom: 20px;
+}
+#doOrder
+{
+    width:150px;
+    padding:3px;
+    float:right;
+    color:white;
+    text-align: center;
+    background-color:#222222;
+    border-radius: 3px;
+
+}
+
+#doOrder:hover
+{
+    background-color:black;
+    cursor:pointer;
 }
 
 #menu
@@ -51,25 +64,11 @@ body
     clear:both;
 }
 
-.delete
-{
-    float:right;
-}
 
-
-.category_name
-{
-    display:inline-block;
-}
-
-.category_count
-{
-    display:inline-block;
-}
 
 .option
 {
-    color:#adadad;
+    color:#7c7c7c;
     float:left;
     font-size:24px;
     padding:10px;
@@ -82,19 +81,6 @@ body
     cursor: pointer;
 }
 
-#sidebar
-{
-    min-height: 600px;
-    min-width: 128px;
-    background-color: lightgray;
-    float:left;
-    text-align: center;
-    padding: 10px;
-    border-right: #7c7c7c 2px dotted;
-    margin-bottom: 15px;
-
-}
-
 #footer
 {
     text-align: center;
@@ -103,25 +89,8 @@ body
     padding: 10px;
     clear:both;
     color:lightgray;
-}
-
-.optionL
-{
-    width: 120px;
-    height: 30px;
-    padding-top: 20px;
-    text-align: center;
-    font-size: 20px;
-    border-bottom: #7c7c7c 2px dotted;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.optionL:hover
-{
-    cursor: pointer;
-    background-color: orangered;
-    opacity: 0.7;
+    margin-top:25px;
+    margin-bottom: 15px;
 }
 
 
@@ -130,12 +99,21 @@ body
     float:left;
     background-color: #dedede;
     min-height: 600px;
-    width: 830px;
+    width: 980px;
     padding:10px;
     height:auto;
     overflow-y:scroll;
 }
 
+.category_name
+{
+    float:left;
+}
+
+.category_count
+{
+    float:left;
+}
 
 
 .product
@@ -148,6 +126,7 @@ body
     color: #4e4e4e; 
 }
 
+
 .image
 {
     padding-left:10px;
@@ -158,16 +137,24 @@ body
 .id
 {
     float:left;
-    padding:10px;
-    font-size: 24px;
+    padding:30px;
+    font-size: 20px;
 }
 
 .price
 {
     float:right;
     padding: 30px;
-    font-size: 24px;
+    font-size: 20px;
     
+}
+
+.timestamp
+{
+    padding:10px;
+    padding-top:30px;
+    float:left;
+    font-size:18px;
 }
 
 .product_description
@@ -175,14 +162,13 @@ body
     padding-top: 10px;
     float:left;
 }
-.addToTrolley
+
+.delete
 {
     float:right;
-    margin-top: 25px;
-    margin-right: 25px;
 }
 
-.addToTrolley:hover
+.delete:hover
 {
-    cursor: pointer;
+    cursor:pointer;
 }

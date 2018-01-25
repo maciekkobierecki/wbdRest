@@ -26,4 +26,7 @@
     <!--
     <Manager pathname="" />
     -->
+    <Manager pathname="">
+      <saveOnRestart>false</saveOnRestart>
+</Manager> 
 </Context>

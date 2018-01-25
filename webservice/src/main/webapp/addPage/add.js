@@ -1,11 +1,12 @@
 var content=$("#content")[0];
 var serverIP="192.168.1.7";
 
-var doOrderButton=$("#doOrder")[0];
-doOrderButton.addEventListener("click", function(){ doOrder(); });
+
+$("#submit")[0].addEventListener('click', function(){
+    sendProductToAdd();
+})
 
 document.addEventListener("DOMContentLoaded", function(){
-    fetchProductsInTrolley();
 });
 
 function addToTrolley(id, price)
@@ -83,4 +84,70 @@ function doOrder(){
             $("#content").empty();       
         });
     }); 
+}
+
+
+function fetchOrders(){
+    console.log("fetchOrders")
+    $(document).ready(function() {
+        $.ajax({
+            url: "http://"+serverIP+":8081/wbd/api/getOrders",
+            dataType: "json"
+        }).then(function(data) {
+           $.each(data, function(key, value){
+               var order=createOrder(value.timestamp, value.product_id, value.order_price);
+        	   appendOrder(order[0]);
+           });
+           
+        });
+    }); 
+}
+
+
+function createOrder(timestamp, id, order_price){
+    //id
+    var $id=$("<div />")
+    .addClass("id")
+    .html("Id produktu:"+id);
+    //price
+    var $price=$("<div />")
+    .addClass("price")
+    .html("koszt zamówienia: "+order_price);
+    var $timestamp=$("<div />")
+    .addClass("timestamp")
+    .html("Data zamówienia: "+timestamp);
+    var $newOrder= $("<div />")
+    .addClass("product")
+    .append($timestamp)
+    .append($id)
+    .append($price);
+    
+    return $newOrder;
+}
+
+function appendOrder(order)
+{
+    content.append(order);
+}
+
+function sendProductToAdd(){
+    var id=$("#id").val();
+    var rodzaj=$("#rodzaj").val();
+    var model=$("#model").val();
+    var data_produkcji=$("#data_produkcji").val();
+    var cena=$("#cena").val();
+    var dostepna_ilosc=$("#dostepna_ilosc").val();
+    var id_hurtownii=$("#id_hurtownii").val();
+
+    console.log("sendProductToAdd")
+    $(document).ready(function() {
+        $.ajax({
+            url: "http://"+serverIP+":8081/wbd/api/addProduct?id="+id+"&rodzaj="+rodzaj
+            +"&model="+model+"&data_produkcji="+data_produkcji+"&cena="+cena
+            +"&dostepna_ilosc="+dostepna_ilosc+"&id_hurtownii="+id_hurtownii
+        }).then(function(data) {
+            console.log(data);   
+        });
+    }); 
+    
 }

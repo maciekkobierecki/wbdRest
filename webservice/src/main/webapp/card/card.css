@@ -108,20 +108,22 @@ body
 .product
 {
     min-width:500px;
+    position: relative;
     min-height:84px;
     background-color: #C0C0C0;
     border: 1px dotted rgb(124, 124, 124);
     color: #4e4e4e; 
 }
 
+
 .image
 {
-    padding-left: 10px;
+    padding-left:10px;
     padding-top: 10px;
     float:left;
 }
 
-.name
+.id
 {
     float:left;
     padding:10px;
@@ -130,10 +132,16 @@ body
 
 .price
 {
-    float:left;
+    float:right;
     padding: 30px;
     font-size: 24px;
-    margin-left: 550px;
+    
+}
+
+.product_description
+{
+    padding-top: 10px;
+    float:left;
 }
 
 .delete

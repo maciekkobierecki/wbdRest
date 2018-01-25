@@ -5,8 +5,8 @@
   <meta charset="utf-8">
 
   <title>WBDshop</title>
-  <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Ubuntu+Mono|VT323" rel="stylesheet">
-  <link rel="stylesheet" href="mainPage.css">
+  <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|VT323" rel="stylesheet">
+  <link rel="stylesheet" href="orders.css">
   <script src="jquery-3.2.1.min.js"></script>
 </head>
 
@@ -17,9 +17,7 @@
             
         </div>
 
-        <div id="card" onclick="location.href = 'http://192.168.1.7:8081/wbd/card/card.html';">
-            <img src="trolley.png">
-        </div>
+        
 
         <div id="menu">
             <div class="option" onclick="location.href = 'http://192.168.1.7:8081/wbd/mainPage/mainPage.html';">Produkty</div>
@@ -31,14 +29,15 @@
         </div>
 
         <div id="topbar">
-            Nasze produkty pochodzą tylko od sprawdzonych dostawców.
+            Koszyk
+            <div id="doOrder">
+                Zamawiam
+            </div>
         </div>
 
-        <div id="sidebar">
-                
-        </div>
 
         <div id="content">
+           
             <div style="clear:both"></div>
         </div>
 
@@ -47,6 +46,7 @@
         </div>
 
     </div>
-  <script src="mainPage.js"></script>
+
+  <script src="orders.js"></script>
 </body>
 </html>

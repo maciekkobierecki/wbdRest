@@ -6,7 +6,6 @@ var serverIP="192.168.1.7";
 document.addEventListener("DOMContentLoaded", function(){
     fetchProducts("any");
     fetchCategories();
-    $("#content").resize();
 });
 
 $(window).on('load', function () {
@@ -51,7 +50,7 @@ function fetchProducts(category)
             dataType: "json"
         }).then(function(data) {
            $.each(data, function(key, value){
-        	   var product=createProduct(value.product_name, value.product_price, value.product_description);
+        	   var product=createProduct(value.product_id, value.product_price, value.product_description);
         	   appendProduct(product[0]);
            });
            
@@ -76,16 +75,16 @@ function resizeDivs() {
    
 }
 
-function createProduct(name, price, description)
+function createProduct(id, price, description)
 {
     //image
     var $image=$("<div />")
     .addClass("image")
     .html("<img src='image.jpg'>");
-    //name
-    var $name=$("<div />")
-    .addClass("name")
-    .html(name);
+    //id
+    var $id=$("<div />")
+    .addClass("id")
+    .html(id);
     //price
     var $price=$("<div />")
     .addClass("price")
@@ -101,7 +100,7 @@ function createProduct(name, price, description)
     var $newProduct= $("<div />")
     .addClass("product")
     .append($image)
-    .append($name)
+    .append($id)
     .append($description)
     .append($delete)
     .append($trolley)
@@ -126,8 +125,8 @@ function addCategory(name, count)
     categories.append(createCategory(name, count));
 }
 
-function addProduct(name, price, description)
+function addProduct(id, price, description)
 {
-    var newProduct=createProduct(name, price,description);
+    var newProduct=createProduct(id, price,description);
     appendProduct(newProduct[0]);
 }
