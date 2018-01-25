@@ -14,16 +14,39 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-<groupId>com.sun.jersey</groupId>
-<artifactId>jersey-server</artifactId>
-<version>1.19</version>
+   <dependency>
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-server</artifactId>
+    <version>1.17.1</version>
 </dependency>
 <dependency>
-<groupId>com.sun.jersey</groupId>
-<artifactId>jersey-servlet</artifactId>
-<version>1.19</version>
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-core</artifactId>
+    <version>1.17.1</version>
 </dependency>
+<dependency>
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-servlet</artifactId>
+    <version>1.17.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.6.2</version>
+</dependency>
+<dependency>
+    <groupId>com.thetransactioncompany</groupId>
+    <artifactId>java-property-utils</artifactId>
+    <version>1.9.1</version>
+</dependency>
+
+<dependency>
+    <groupId>com.thetransactioncompany</groupId>
+    <artifactId>cors-filter</artifactId>
+    <version>1.9.1</version>
+</dependency>
+
 <dependency>
 <groupId>org.apache.tomcat</groupId>
 <artifactId>servlet-api</artifactId>

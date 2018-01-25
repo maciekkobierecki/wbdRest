@@ -1,0 +1,147 @@
+body
+{
+    background-color: rgb(73, 73, 73);
+    font-family: 'Anonymous Pro', monospace;
+}
+
+#container
+{
+    width:1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#logo
+{
+    font-family: 'Ubuntu Mono', monospace;
+    font-size:70px;
+    padding:15px;
+    color:white;
+    letter-spacing: 5px;
+    margin-left: 30px;
+    float:left;
+}
+
+
+#topbar
+{
+    background-color: #128870;
+    padding:30px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+#doOrder
+{
+    width:150px;
+    padding:3px;
+    float:right;
+    color:white;
+    text-align: center;
+    background-color:#222222;
+    border-radius: 3px;
+
+}
+
+#doOrder:hover
+{
+    background-color:black;
+    cursor:pointer;
+}
+
+#menu
+{
+    background-color:#222222;
+    padding: 10px;
+    margin-bottom: 15px;
+    clear:both;
+}
+
+.option
+{
+    color:#7c7c7c;
+    float:left;
+    font-size:24px;
+    padding:10px;
+    border-right: #7c7c7c 2px dotted;
+}
+
+.option:hover
+{
+    background-color: #141414;
+    cursor: pointer;
+}
+
+#footer
+{
+    text-align: center;
+    background-color:#222222;
+    font-size: 20px;
+    padding: 10px;
+    clear:both;
+    color:lightgray;
+    margin-top:25px;
+    margin-bottom: 15px;
+}
+
+
+#content
+{
+    float:left;
+    background-color: #dedede;
+    min-height: 600px;
+    width: 980px;
+    padding:10px;
+    height:auto;
+    overflow-y:scroll;
+}
+
+.category_name
+{
+    float:left;
+}
+
+.category_count
+{
+    float:left;
+}
+
+
+.product
+{
+    min-width:500px;
+    min-height:84px;
+    background-color: #C0C0C0;
+    border: 1px dotted rgb(124, 124, 124);
+    color: #4e4e4e; 
+}
+
+.image
+{
+    padding-left: 10px;
+    padding-top: 10px;
+    float:left;
+}
+
+.name
+{
+    float:left;
+    padding:10px;
+    font-size: 24px;
+}
+
+.price
+{
+    float:left;
+    padding: 30px;
+    font-size: 24px;
+    margin-left: 550px;
+}
+
+.delete
+{
+    float:right;
+}
+
+.delete:hover
+{
+    cursor:pointer;
+}
