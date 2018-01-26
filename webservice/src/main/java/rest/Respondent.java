@@ -1,8 +1,17 @@
 package rest;
 
 import java.awt.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.ApplicationPath;
@@ -14,12 +23,22 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 
 import com.google.gson.Gson;
+
+import jpa.MySqlConnector;
+import jpa.Product;
+
 import com.google.gson.*;
 
 @Path("/")
 public class Respondent {
 	public static final String IN_TROLLEY="in_trolley";
 	public static final String ACK="200 ACK";
+	
+	@Inject
+	@ApplicationScoped
+	private MySqlConnector connector;
+	
+	
 	
 	@Context 
 	private HttpServletRequest request;
@@ -172,9 +191,44 @@ public class Respondent {
 			@QueryParam("dostepna_ilosc") int dostepna_ilosc,
 			@QueryParam("id_hurtownii") int id_hurtownii)
 	{
-		//DODAWANIE DO BAZY TEGO SCIERWA
+		addToDB(rodzaj, model, data_produkcji, cena, dostepna_ilosc);
 		return ACK;
 	}
 		
+	
+	@GET
+	@Path("addProductToDB")
+	public String addToDB(
+			@QueryParam("rodzaj")String rodzaj,
+			@QueryParam("model")String model,
+			@QueryParam("data_produkcji")String dataProdukcji,
+			@QueryParam("cena")int cena,
+			@QueryParam("dostepna_ilosc")int ilosc) {
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("ProductPU");
+		EntityManager em=emf.createEntityManager();
+		Product product=new Product(getID(),rodzaj, model, cena,ilosc, parseDate(dataProdukcji),1,1,1,1);
+		em.getTransaction().begin();
+		em.persist(product);
+		em.getTransaction().commit();
+		return ACK;
+	}
+	
+	private int getID() {
+		Random rand=new Random();
+		return rand.nextInt(100000);
+	}
+	
+	private java.sql.Date parseDate(String date) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		try {
+	        Date parsed = format.parse("20110210");
+	        java.sql.Date sql = new java.sql.Date(parsed.getTime());
+	        return sql;
+		}
+		catch(ParseException e) {
+			
+		}
+        return null;
+	}
 	
 }
